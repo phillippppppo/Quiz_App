@@ -1,13 +1,13 @@
 package com.pratyakshkhurana.quizapp
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
 import androidx.appcompat.app.AlertDialog
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.quiz_categories_activity.*
+import kotlinx.android.synthetic.main.quiz_categories_activity.recyclerView
 
 class QuizCategories : AppCompatActivity(), OnClicked {
     private lateinit var categoryList: ArrayList<CategoryView>
@@ -29,36 +29,21 @@ class QuizCategories : AppCompatActivity(), OnClicked {
         recyclerView.adapter = CategoriesAdapter(categoryList, this)
     }
 
+    // TODO Missing Resources
     private fun fetchCategories(): ArrayList<CategoryView> {
         val data: ArrayList<CategoryView> = ArrayList()
+
         val obj1 = ResourcesCompat.getDrawable(resources, R.drawable.bg1, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.book_stack, null)?.let { it1 ->
+            ResourcesCompat.getDrawable(resources, R.drawable.music2, null)?.let { it1 ->
                 CategoryView(
-                    R.drawable.bg, "Entertainment: Books",
+                    R.drawable.bg,
+                    "Music",
                     it, it1
                 )
             }
         }
         val obj2 = ResourcesCompat.getDrawable(resources, R.drawable.bg2, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.film, null)?.let { it1 ->
-                CategoryView(
-                    R.drawable.bg,
-                    "Entertainment: Film",
-                    it, it1
-                )
-            }
-        }
-        val obj3 = ResourcesCompat.getDrawable(resources, R.drawable.bg3, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.spotify, null)?.let { it1 ->
-                CategoryView(
-                    R.drawable.bg,
-                    "Entertainment: Music",
-                    it, it1
-                )
-            }
-        }
-        val obj4 = ResourcesCompat.getDrawable(resources, R.drawable.bg4, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.cricket, null)?.let { it1 ->
+            ResourcesCompat.getDrawable(resources, R.drawable.runner2, null)?.let { it1 ->
                 CategoryView(
                     R.drawable.bg,
                     "Sports",
@@ -66,8 +51,8 @@ class QuizCategories : AppCompatActivity(), OnClicked {
                 )
             }
         }
-        val obj5 = ResourcesCompat.getDrawable(resources, R.drawable.bg1, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.art, null)?.let { it1 ->
+        val obj3 = ResourcesCompat.getDrawable(resources, R.drawable.bg3, null)?.let {
+            ResourcesCompat.getDrawable(resources, R.drawable.art2, null)?.let { it1 ->
                 CategoryView(
                     R.drawable.bg,
                     "Art",
@@ -75,8 +60,8 @@ class QuizCategories : AppCompatActivity(), OnClicked {
                 )
             }
         }
-        val obj6 = ResourcesCompat.getDrawable(resources, R.drawable.bg2, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.politics, null)?.let { it1 ->
+        val obj4 = ResourcesCompat.getDrawable(resources, R.drawable.bg4, null)?.let {
+            ResourcesCompat.getDrawable(resources, R.drawable.politics2, null)?.let { it1 ->
                 CategoryView(
                     R.drawable.bg,
                     "Politics",
@@ -84,26 +69,8 @@ class QuizCategories : AppCompatActivity(), OnClicked {
                 )
             }
         }
-        val obj7 = ResourcesCompat.getDrawable(resources, R.drawable.bg3, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.mythology, null)?.let { it1 ->
-                CategoryView(
-                    R.drawable.bg,
-                    "Mythology",
-                    it, it1
-                )
-            }
-        }
-        val obj8 = ResourcesCompat.getDrawable(resources, R.drawable.bg4, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.anime, null)?.let { it1 ->
-                CategoryView(
-                    R.drawable.bg,
-                    "Entertainment: Japanese Anime & Manga",
-                    it, it1
-                )
-            }
-        }
-        val obj9 = ResourcesCompat.getDrawable(resources, R.drawable.bg1, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.history, null)?.let { it1 ->
+        val obj5 = ResourcesCompat.getDrawable(resources, R.drawable.bg5, null)?.let {
+            ResourcesCompat.getDrawable(resources, R.drawable.history2, null)?.let { it1 ->
                 CategoryView(
                     R.drawable.bg,
                     "History",
@@ -111,8 +78,8 @@ class QuizCategories : AppCompatActivity(), OnClicked {
                 )
             }
         }
-        val obj10 = ResourcesCompat.getDrawable(resources, R.drawable.bg2, null)?.let {
-            ResourcesCompat.getDrawable(resources, R.drawable.science, null)?.let { it1 ->
+        val obj6 = ResourcesCompat.getDrawable(resources, R.drawable.bg6, null)?.let {
+            ResourcesCompat.getDrawable(resources, R.drawable.experiment2, null)?.let { it1 ->
                 CategoryView(
                     R.drawable.bg,
                     "Science",
@@ -139,18 +106,6 @@ class QuizCategories : AppCompatActivity(), OnClicked {
         if (obj6 != null) {
             data.add(obj6)
         }
-        if (obj7 != null) {
-            data.add(obj7)
-        }
-        if (obj8 != null) {
-            data.add(obj8)
-        }
-        if (obj9 != null) {
-            data.add(obj9)
-        }
-        if (obj10 != null) {
-            data.add(obj10)
-        }
         return data
 
     }
@@ -172,8 +127,14 @@ class QuizCategories : AppCompatActivity(), OnClicked {
             intent.putExtra("category", categorySelected)
             startActivity(intent)
         }
-        dialogLayout.findViewById<View>(R.id.cancelButton).setOnClickListener {
+        dialogLayout.findViewById<View>(R.id.okButton).setOnClickListener {
+            categorySelected = s.category
             alertDialog.dismiss()
+
+            val intent = Intent(this, QuestionsActivity::class.java)
+            intent.putExtra("user", userName)
+            intent.putExtra("category", categorySelected)
+            startActivity(intent)
         }
         builder.setView(dialogLayout)
         alertDialog = builder.create()

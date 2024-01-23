@@ -38,6 +38,8 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var right: MediaPlayer
     private lateinit var wrong: MediaPlayer
 
+    private lateinit var categorySelected: CategoryView
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -54,7 +56,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         mUsername = intent.getStringExtra("user").toString()
         category = intent.getStringExtra("category").toString()
-        mQuestionList = Questions().fetchData()
+        mQuestionList = Questions().fetchDataForCategory(category)
 
         setQuestion()
 
@@ -67,6 +69,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         //music effects on wrong and right answers
         right = MediaPlayer.create(this, R.raw.right)
         wrong = MediaPlayer.create(this, R.raw.w)
+
 
     }
 
