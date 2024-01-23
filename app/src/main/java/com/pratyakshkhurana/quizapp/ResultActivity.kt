@@ -4,14 +4,14 @@ import android.annotation.SuppressLint
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
-import kotlinx.android.synthetic.main.activity_result.*
+import kotlinx.android.synthetic.main.result_activity.*
 
 
 class ResultActivity : AppCompatActivity() {
     @SuppressLint("SetTextI18n")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_result)
+        setContentView(R.layout.result_activity)
 
         name.text = intent.getStringExtra("user")
         val correct = intent.getIntExtra("correct", 0)

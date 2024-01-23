@@ -21,7 +21,7 @@
 
   </com.google.android.material.appbar.AppBarLayout>
 
-  <include layout="@layout/content_questions"/>
+  <include layout="@layout/fragment_questions"/>
 
   <com.google.android.material.floatingactionbutton.FloatingActionButton
   android:id="@+id/fab"

@@ -1,16 +1,13 @@
 package com.pratyakshkhurana.quizapp
 
-import android.app.Dialog
-import android.content.DialogInterface
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.activity_quiz_categories.*
+import kotlinx.android.synthetic.main.quiz_categories_activity.*
 
 class QuizCategories : AppCompatActivity(), OnClicked {
     private lateinit var categoryList: ArrayList<CategoryView>
@@ -21,7 +18,7 @@ class QuizCategories : AppCompatActivity(), OnClicked {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_quiz_categories)
+        setContentView(R.layout.quiz_categories_activity)
 
 
         userName = intent.getStringExtra("user").toString()
@@ -165,7 +162,7 @@ class QuizCategories : AppCompatActivity(), OnClicked {
 
     //Dialog for Quiz Category selection
     private fun showDialog(s: CategoryView) {
-        val dialogLayout = layoutInflater.inflate(R.layout.category_dialog, null)
+        val dialogLayout = layoutInflater.inflate(R.layout.explanation_dialog, null)
         builder = AlertDialog.Builder(this)
         dialogLayout.findViewById<View>(R.id.okButton).setOnClickListener {
             categorySelected = s.category

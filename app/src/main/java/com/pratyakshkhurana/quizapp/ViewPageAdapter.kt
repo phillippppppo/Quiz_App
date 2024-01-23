@@ -1,17 +1,15 @@
 package com.pratyakshkhurana.quizapp
 
+/* TODO Delete if not needed
 import android.content.Context
-import android.text.Layout
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.viewpager.widget.PagerAdapter
-import androidx.viewpager2.widget.ViewPager2
-import org.w3c.dom.Text
 
-class AdapterViewPager(var context:Context,var item:ArrayList<OnBoardIngItems>): PagerAdapter() {
+class ViewPageAdapter(var context:Context, var item:ArrayList<OnBoardIngItems>): PagerAdapter() {
     override fun getCount(): Int {
         return item.size
     }
@@ -32,3 +30,5 @@ class AdapterViewPager(var context:Context,var item:ArrayList<OnBoardIngItems>):
         return view
     }
 }
+
+ */

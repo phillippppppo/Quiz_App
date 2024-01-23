@@ -12,14 +12,14 @@ import android.view.animation.DecelerateInterpolator
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.ContextCompat
-import kotlinx.android.synthetic.main.activity_questions2.*
+import kotlinx.android.synthetic.main.questions_activity2.*
 
 
 class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     private var mSelectOptionPosition: Int = 0
     private var mCurrentQuestionIndex: Int = 1
-    private lateinit var mQuestionList: ArrayList<Questions>
+    private lateinit var mQuestionList: ArrayList<QuestionsView>
     private lateinit var mUsername: String
     private lateinit var category: String
     private var mCorrectAnswers: Int = 0
@@ -41,7 +41,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_questions2)
+        setContentView(R.layout.questions_activity2)
 
         mQuestion = tvQuestion
         mProgressbar = progressBar
@@ -54,7 +54,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         mUsername = intent.getStringExtra("user").toString()
         category = intent.getStringExtra("category").toString()
-        mQuestionList = GetAllQuestions().fetchData()
+        mQuestionList = Questions().fetchData()
 
         setQuestion()
 

@@ -1,4 +1,8 @@
+
+
 package com.pratyakshkhurana.quizapp
+
+/* TODO Delete if not needed
 
 import android.content.Context
 import android.content.Intent
@@ -10,7 +14,7 @@ import androidx.viewpager.widget.ViewPager
 import com.google.android.material.tabs.TabLayout
 
 class OnBoardingScreen : AppCompatActivity() {
-    var OnBoardingAdapter:AdapterViewPager?=null
+    var OnBoardingAdapter:ViewPageAdapter?=null
     var tabLayout:TabLayout?=null
     var onBoardingPager:ViewPager?=null
     var next:TextView?=null
@@ -67,7 +71,7 @@ class OnBoardingScreen : AppCompatActivity() {
     fun setOnBoardingViewPagerAdapter(onBoardIngItems: ArrayList<OnBoardIngItems>)
     {
         onBoardingPager=findViewById(R.id.screenPager)
-        OnBoardingAdapter=AdapterViewPager(this,onBoardIngItems)
+        OnBoardingAdapter=ViewPageAdapter(this,onBoardIngItems)
         onBoardingPager?.adapter=OnBoardingAdapter
         tabLayout?.setupWithViewPager(onBoardingPager)
 
@@ -85,3 +89,5 @@ class OnBoardingScreen : AppCompatActivity() {
     }
 
 }
+
+ */

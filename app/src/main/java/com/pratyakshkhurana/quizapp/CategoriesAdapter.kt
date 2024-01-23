@@ -8,7 +8,7 @@ import android.widget.TextView
 import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.each_category_view.view.*
+import kotlinx.android.synthetic.main.category_button.view.*
 
 class CategoriesAdapter(
     private val data: ArrayList<CategoryView>,
@@ -18,7 +18,7 @@ class CategoriesAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CategoriesViewHolder {
         val view =
-            LayoutInflater.from(parent.context).inflate(R.layout.each_category_view, parent, false)
+            LayoutInflater.from(parent.context).inflate(R.layout.category_button, parent, false)
         val viewHolder = CategoriesViewHolder(view)
         view.setOnClickListener {
             listener.categoryClicked(data[viewHolder.adapterPosition])
