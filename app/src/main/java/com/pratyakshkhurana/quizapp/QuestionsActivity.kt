@@ -78,10 +78,16 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
 
         resetToDefaultOptions()
 
+        mSubmitButton.isEnabled = false
+        mSubmitButton.background = ContextCompat.getDrawable(this, R.drawable.gray_out_bg) // Replace with your actual gray drawable resource
+
         val currentQuestion = mQuestionList[mCurrentQuestionIndex - 1]
 
         if (mCurrentQuestionIndex <= mQuestionList.size) {
             mSubmitButton.text = "SUBMIT"
+            // After an answer is submitted, disable the submit button and set it to a gray color until the next option is selected
+            mSubmitButton.isEnabled = false
+            mSubmitButton.background = ContextCompat.getDrawable(this, R.drawable.gray_out_bg) // Replace with your actual gray drawable resource
         }
 
         setProgressAnimate(mProgressbar,mCurrentQuestionIndex)
@@ -114,6 +120,9 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private fun selectedOptionView(tv: TextView, selectedOptionPosition: Int) {
         resetToDefaultOptions()
         mSelectOptionPosition = selectedOptionPosition
+
+        mSubmitButton.isEnabled = true
+        mSubmitButton.background = ContextCompat.getDrawable(this, R.drawable.submit_active_bg) // Replace with your actual active drawable resource
 
         tv.setTextColor(Color.parseColor("#363A43"))
         tv.setTypeface(tv.typeface, Typeface.BOLD)
@@ -195,6 +204,7 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 }
 
                 mSelectOptionPosition = 0
+
             }
 
 
