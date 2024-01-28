@@ -3,6 +3,7 @@ package com.pratyakshkhurana.quizapp
 import android.content.Intent
 import android.os.Bundle
 import android.view.View
+import android.widget.TextView
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.content.res.ResourcesCompat
@@ -11,22 +12,33 @@ import kotlinx.android.synthetic.main.quiz_categories_activity.recyclerView
 
 class QuizCategories : AppCompatActivity(), OnClicked {
     private lateinit var categoryList: ArrayList<CategoryView>
-    private lateinit var userName: String
     private lateinit var categorySelected: String
-    private lateinit var builder : AlertDialog.Builder
-    private lateinit var alertDialog: AlertDialog
+    private lateinit var totalScoreText: TextView
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.quiz_categories_activity)
 
+        // Check if the activity is started with a flag to reset the score
+        val resetScore = intent.getBooleanExtra("resetScore", false)
 
-        userName = intent.getStringExtra("user").toString()
+        if (resetScore) {
+            // Reset total score when accessing categories from MainActivity
+            UserPointsManager.setTotalPoints(0)
+        }
+
         //recycler view needs layout manager
         recyclerView.layoutManager = LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
 
         categoryList = fetchCategories()
         recyclerView.adapter = CategoriesAdapter(categoryList, this)
+
+        totalScoreText = findViewById(R.id.totalScoreText)
+        updateTotalScore()
+    }
+
+    private fun updateTotalScore() {
+        totalScoreText.text = "Total Score: ${UserPointsManager.getTotalPoints()}"
     }
 
     private fun fetchCategories(): ArrayList<CategoryView> {
@@ -113,8 +125,8 @@ class QuizCategories : AppCompatActivity(), OnClicked {
     override fun categoryClicked(s: CategoryView) {
         categorySelected = s.category
         val intent = Intent(this, QuestionsActivity::class.java)
-        intent.putExtra("user", userName)
         intent.putExtra("category", categorySelected)
         startActivity(intent)
+
     }
 }

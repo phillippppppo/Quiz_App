@@ -22,30 +22,88 @@
         app:layout_constraintVertical_bias="0.0">
 
         <TextView
+            android:id="@+id/totalPoints"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
             android:layout_marginTop="64dp"
-            android:text="Hey, Congratulations !"
+            android:text="Your new total is:"
             android:textColor="@color/white"
             android:textSize="30sp"
             android:textStyle="bold" />
 
-        <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="260dp"
-            android:src="@drawable/trophy" />
-
-        <TextView
-            android:id="@+id/name"
-            android:layout_width="wrap_content"
+        <!-- Horizontal LinearLayout for Power Cards -->
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:layout_marginTop="40dp"
-            android:text="John"
-            android:textColor="@color/white"
-            android:textSize="25sp"
-            android:textStyle="bold" />
+            android:orientation="horizontal"
+            android:layout_marginTop="20dp">
+
+            <!-- Power 1 Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/power1Background"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                app:cardBackgroundColor="#7d72ec"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/power1"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="POWER 1"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Power 2 Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/power2Background"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_weight="1"
+                android:layout_marginEnd="10dp"
+                app:cardBackgroundColor="#7d72ec"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/power2"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="POWER 2"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </androidx.cardview.widget.CardView>
+
+            <!-- Power 3 Card -->
+            <androidx.cardview.widget.CardView
+                android:id="@+id/power3Background"
+                android:layout_width="0dp"
+                android:layout_height="300dp"
+                android:layout_weight="1"
+                app:cardBackgroundColor="#7d72ec"
+                app:cardCornerRadius="30dp"
+                app:cardElevation="10dp">
+
+                <TextView
+                    android:id="@+id/power3"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:gravity="center"
+                    android:text="POWER 3"
+                    android:textColor="@color/white"
+                    android:textSize="18sp" />
+
+            </androidx.cardview.widget.CardView>
+        </LinearLayout>
 
         <TextView
             android:id="@+id/totalScore"
@@ -86,6 +144,7 @@
             </LinearLayout>
         </androidx.cardview.widget.CardView>
     </LinearLayout>
+
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

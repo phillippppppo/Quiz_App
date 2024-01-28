@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
         buttonStart.setOnClickListener {
             // Intent to start QuizCategories activity
             val intent = Intent(this@MainActivity, QuizCategories::class.java)
+            intent.putExtra("resetScore", true)
             startActivity(intent)
         }
 

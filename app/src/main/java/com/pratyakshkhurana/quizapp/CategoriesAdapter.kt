@@ -47,4 +47,5 @@ class CategoriesAdapter(
 
 interface OnClicked {
     fun categoryClicked(s: CategoryView)
+
 }

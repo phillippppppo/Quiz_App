@@ -3,6 +3,7 @@ package com.pratyakshkhurana.quizapp
 import android.animation.ObjectAnimator
 import android.annotation.SuppressLint
 import android.content.Intent
+import android.content.SharedPreferences
 import android.graphics.Color
 import android.graphics.Typeface
 import android.media.MediaPlayer
@@ -20,7 +21,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private var mSelectOptionPosition: Int = 0
     private var mCurrentQuestionIndex: Int = 1
     private lateinit var mQuestionList: ArrayList<QuestionsView>
-    private lateinit var mUsername: String
     private lateinit var category: String
     private var mCorrectAnswers: Int = 0
 
@@ -39,11 +39,14 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var wrong: MediaPlayer
 
     private lateinit var categorySelected: CategoryView
+    private lateinit var sharedPreferences: SharedPreferences
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.questions_activity2)
+
+        sharedPreferences = getSharedPreferences("QuizApp", MODE_PRIVATE)
 
         mQuestion = tvQuestion
         mProgressbar = progressBar
@@ -54,7 +57,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
         mOption4 = option4
         mSubmitButton = submitButton
 
-        mUsername = intent.getStringExtra("user").toString()
         category = intent.getStringExtra("category").toString()
         mQuestionList = Questions().fetchDataForCategory(category)
 
@@ -157,10 +159,13 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
                 } else {
                     val intent = Intent(this, ResultActivity::class.java)
                     intent.putExtra("correct", mCorrectAnswers)
-                    intent.putExtra("user", mUsername)
                     intent.putExtra("total", 10)
                     startActivity(intent)
                     finish()
+
+                    // Update total score in memory
+                    UserPointsManager.setTotalPoints(UserPointsManager.getTotalPoints() + mCorrectAnswers)
+
                 }
 
             } else {
