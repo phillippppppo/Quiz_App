@@ -59,33 +59,6 @@
                 android:textSize="25sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/enterNameTextView"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="10dp"
-                android:text="@string/please_enter_your_name_login_screen_text"
-                android:textSize="18sp" />
-
-            <com.google.android.material.textfield.TextInputLayout
-                style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="20dp">
-
-                <!--                actual edit text for entering stuff-->
-                <androidx.appcompat.widget.AppCompatEditText
-                    android:id="@+id/enterNameEditText"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:hint="e.g Ron"
-                    android:inputType="textCapWords"
-                    android:digits="0123456789qwertzuiopasdfghjklyxcvbnm "
-                    android:textColor="#363A43"
-                    android:textColorHint="#7A8089"
-                    android:textSize="16sp" />
-
-            </com.google.android.material.textfield.TextInputLayout>
 
             <androidx.cardview.widget.CardView
                 android:layout_width="150dp"
@@ -114,6 +87,14 @@
 
                 </LinearLayout>
             </androidx.cardview.widget.CardView>
+
+            <TextView
+                android:id="@+id/showHintTextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:text="@string/show_rules_text"
+                android:textSize="18sp" />
 
         </LinearLayout>
 

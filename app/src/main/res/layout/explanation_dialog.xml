@@ -34,7 +34,7 @@
                 android:id="@+id/instructionsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="Kindly read the following rules before you proceed - "
+                android:text="These are the rules of the game"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="italic" />
@@ -130,37 +130,6 @@
         </LinearLayout>
 
         <androidx.cardview.widget.CardView
-            android:layout_width="120dp"
-            android:layout_height="wrap_content"
-            android:layout_below="@id/rulesLL"
-            android:layout_alignParentStart="true"
-            android:layout_margin="20dp"
-            app:cardBackgroundColor="#7d72ec"
-            app:cardCornerRadius="30dp"
-            app:cardElevation="10dp">
-
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:orientation="horizontal"
-                android:paddingTop="3dp"
-                android:paddingBottom="3dp">
-
-                <TextView
-                    android:id="@+id/cancelButton"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_margin="5dp"
-                    android:layout_weight="1"
-                    android:gravity="center"
-                    android:text="CANCEL"
-                    android:textColor="@color/white"
-                    android:textSize="18sp" />
-
-            </LinearLayout>
-        </androidx.cardview.widget.CardView>
-
-        <androidx.cardview.widget.CardView
             android:layout_width="100dp"
             android:layout_height="wrap_content"
             android:layout_below="@id/rulesLL"
@@ -184,7 +153,7 @@
                     android:layout_margin="5dp"
                     android:layout_weight="1"
                     android:gravity="center"
-                    android:text="OK"
+                    android:text="GOT IT"
                     android:textColor="@color/white"
                     android:textSize="18sp" />
 

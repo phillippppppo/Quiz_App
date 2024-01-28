@@ -29,7 +29,6 @@ class QuizCategories : AppCompatActivity(), OnClicked {
         recyclerView.adapter = CategoriesAdapter(categoryList, this)
     }
 
-    // TODO Missing Resources
     private fun fetchCategories(): ArrayList<CategoryView> {
         val data: ArrayList<CategoryView> = ArrayList()
 
@@ -112,33 +111,10 @@ class QuizCategories : AppCompatActivity(), OnClicked {
 
     //through interface in adapter class
     override fun categoryClicked(s: CategoryView) {
-        showDialog(s)
-    }
-
-    //Dialog for Quiz Category selection
-    private fun showDialog(s: CategoryView) {
-        val dialogLayout = layoutInflater.inflate(R.layout.explanation_dialog, null)
-        builder = AlertDialog.Builder(this)
-        dialogLayout.findViewById<View>(R.id.okButton).setOnClickListener {
-            categorySelected = s.category
-            alertDialog.dismiss()
-            val intent = Intent(this, QuestionsActivity::class.java)
-            intent.putExtra("user", userName)
-            intent.putExtra("category", categorySelected)
-            startActivity(intent)
-        }
-        dialogLayout.findViewById<View>(R.id.okButton).setOnClickListener {
-            categorySelected = s.category
-            alertDialog.dismiss()
-
-            val intent = Intent(this, QuestionsActivity::class.java)
-            intent.putExtra("user", userName)
-            intent.putExtra("category", categorySelected)
-            startActivity(intent)
-        }
-        builder.setView(dialogLayout)
-        alertDialog = builder.create()
-        alertDialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
-        alertDialog.show()
+        categorySelected = s.category
+        val intent = Intent(this, QuestionsActivity::class.java)
+        intent.putExtra("user", userName)
+        intent.putExtra("category", categorySelected)
+        startActivity(intent)
     }
 }
