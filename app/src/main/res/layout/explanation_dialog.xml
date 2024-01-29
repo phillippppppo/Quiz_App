@@ -16,7 +16,7 @@
             android:id="@+id/attentionText"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Attention!!"
+            android:text="These are the rules of the game"
             android:textAlignment="center"
             android:textColor="@color/black"
             android:textSize="25sp"
@@ -34,7 +34,7 @@
                 android:id="@+id/instructionsText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:text="These are the rules of the game"
+                android:text="This is a group game, so everyone needs to download the game on their phone"
                 android:textColor="@color/black"
                 android:textSize="18sp"
                 android:textStyle="italic" />

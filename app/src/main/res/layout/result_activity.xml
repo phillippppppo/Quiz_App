@@ -43,7 +43,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/power1Background"
                 android:layout_width="0dp"
-                android:layout_height="300dp"
+                android:layout_height="400dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 app:cardBackgroundColor="#7d72ec"
@@ -65,7 +65,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/power2Background"
                 android:layout_width="0dp"
-                android:layout_height="300dp"
+                android:layout_height="400dp"
                 android:layout_weight="1"
                 android:layout_marginEnd="10dp"
                 app:cardBackgroundColor="#7d72ec"
@@ -87,7 +87,7 @@
             <androidx.cardview.widget.CardView
                 android:id="@+id/power3Background"
                 android:layout_width="0dp"
-                android:layout_height="300dp"
+                android:layout_height="400dp"
                 android:layout_weight="1"
                 app:cardBackgroundColor="#7d72ec"
                 app:cardCornerRadius="30dp"
