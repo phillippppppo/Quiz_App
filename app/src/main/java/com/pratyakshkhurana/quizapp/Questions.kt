@@ -1,7 +1,5 @@
 package com.pratyakshkhurana.quizapp
 
-import kotlin.random.Random
-
 class Questions {
 
     fun fetchDataForCategory(category: String): ArrayList<QuestionsView> {
@@ -18,7 +16,7 @@ class Questions {
         return selectRandomQuestions(allQuestions, 10)
     }
 
-    fun shuffleOptions(questions: ArrayList<QuestionsView>): ArrayList<QuestionsView> {
+    private fun shuffleOptions(questions: ArrayList<QuestionsView>): ArrayList<QuestionsView> {
         val shuffledQuestions = ArrayList<QuestionsView>()
 
         for (question in questions) {
@@ -63,7 +61,7 @@ class Questions {
         return shuffledQuestions
     }
 
-    fun selectRandomQuestions(allQuestions: ArrayList<QuestionsView>, count: Int): ArrayList<QuestionsView> {
+    private fun selectRandomQuestions(allQuestions: ArrayList<QuestionsView>, count: Int): ArrayList<QuestionsView> {
         // Shuffle the list to randomize the order of questions
         allQuestions.shuffle()
 
@@ -5529,7 +5527,7 @@ class Questions {
 
         scienceQuestions.add(QuestionsView(
             448,
-            "Which part of the human brain is responsible for controlling balance and coordination?",
+            "Which part of the human quizlogo is responsible for controlling balance and coordination?",
             "Cerebellum",
             "Cerebrum",
             "Brainstem",

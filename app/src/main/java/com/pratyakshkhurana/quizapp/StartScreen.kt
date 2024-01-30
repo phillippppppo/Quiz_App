@@ -8,7 +8,7 @@ import android.os.Bundle
 import android.os.Handler
 
 class StartScreen : AppCompatActivity() {
-    var sharedPreferences: SharedPreferences?=null
+    private var sharedPreferences: SharedPreferences?=null
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_screen)
