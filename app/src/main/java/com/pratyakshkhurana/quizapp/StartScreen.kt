@@ -1,5 +1,6 @@
 package com.pratyakshkhurana.quizapp
 
+
 import android.content.Context
 import android.content.Intent
 import android.content.SharedPreferences
@@ -15,19 +16,8 @@ class StartScreen : AppCompatActivity() {
         sharedPreferences=applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
         Handler().postDelayed(
             {
-                if(sharedPreferences!!.getBoolean("isFirstTimeRun",false))
-                {
-                    startActivity(Intent(applicationContext,MainActivity::class.java))
-                    finish()
-                }
-                /* TODO Delete if not needed + delete "isFirstTimeRun" property if not needed
-                else
-                {
-                    startActivity(Intent(applicationContext,OnBoardingScreen::class.java))
-                    finish()
-                }
-
-                 */
+                startActivity(Intent(applicationContext,MainActivity::class.java))
+                finish()
             },1000
         )
 

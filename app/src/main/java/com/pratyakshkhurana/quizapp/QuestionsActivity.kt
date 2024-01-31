@@ -38,7 +38,6 @@ class QuestionsActivity : AppCompatActivity(), View.OnClickListener {
     private lateinit var right: MediaPlayer
     private lateinit var wrong: MediaPlayer
 
-    private lateinit var categorySelected: CategoryView
     private lateinit var sharedPreferences: SharedPreferences
 
 
