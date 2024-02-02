@@ -135,7 +135,7 @@
             android:layout_below="@id/rulesLL"
             android:layout_alignParentEnd="true"
             android:layout_margin="20dp"
-            app:cardBackgroundColor="#7d72ec"
+            app:cardBackgroundColor="#1A24DB"
             app:cardCornerRadius="30dp"
             app:cardElevation="10dp">
 
