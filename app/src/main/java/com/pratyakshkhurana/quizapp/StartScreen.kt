@@ -13,7 +13,11 @@ class StartScreen : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_start_screen)
+
+        // Initialisieren der SharedPreferences
         sharedPreferences=applicationContext.getSharedPreferences("pref", Context.MODE_PRIVATE)
+
+        // Verzögertes Starten der MainActivity nach 1000 Millisekunden (1 Sekunde)
         Handler().postDelayed(
             {
                 startActivity(Intent(applicationContext,MainActivity::class.java))

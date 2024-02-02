@@ -2,7 +2,9 @@ package com.pratyakshkhurana.quizapp
 
 class Questions {
 
+    // Methode zum Abrufen von Fragen für eine bestimmte Kategorie
     fun fetchDataForCategory(category: String): ArrayList<QuestionsView> {
+        // Je nach Kategorie die entsprechenden Fragen erstellen
         val allQuestions = when (category) {
             "Music" -> createMusicQuestions()
             "Sports" -> createSportsQuestions()
@@ -13,14 +15,18 @@ class Questions {
             else -> createDefaultQuestions()
         }
 
+        // Eine zufällige Auswahl von 10 Fragen zurückgeben
         return selectRandomQuestions(allQuestions, 10)
     }
 
+    //  Methode zum Mischen der Antwortoptionen in den Fragen
     private fun shuffleOptions(questions: ArrayList<QuestionsView>): ArrayList<QuestionsView> {
         val shuffledQuestions = ArrayList<QuestionsView>()
 
+        // Für jede Frage die Antwortoptionen mischen
         for (question in questions) {
 
+            // Die korrekte Antwortoption identifizieren
             val correctOption = when (question.correct) {
                 1 -> question.option1
                 2 -> question.option2
@@ -29,6 +35,7 @@ class Questions {
                 else -> question.option1
             }
 
+            // Die Antwortoptionen in eine Liste einfügen und mischen
             val options = mutableListOf(
                 question.option1,
                 question.option2,
@@ -38,6 +45,7 @@ class Questions {
 
             options.shuffle()
 
+            // Den Index der korrekten Antwortoption im gemischten Array finden
             var correctIndex = 0
 
             for (i in options.indices) {
@@ -47,6 +55,7 @@ class Questions {
                 }
             }
 
+            // Die Frage mit gemischten Antwortoptionen erstellen und der Liste hinzufügen
             val shuffledQuestion = question.copy(
                 option1 = options[0],
                 option2 = options[1],
@@ -61,14 +70,16 @@ class Questions {
         return shuffledQuestions
     }
 
+    // Methode zur Auswahl einer zufälligen Anzahl von Fragen
     private fun selectRandomQuestions(allQuestions: ArrayList<QuestionsView>, count: Int): ArrayList<QuestionsView> {
-        // Shuffle the list to randomize the order of questions
+        // Liste der Fragen zufällig mischen
         allQuestions.shuffle()
 
-        // Take the first 'count' elements from the shuffled list
-        // Make sure 'count' is not greater than the size of the list
+        // Die ersten 'count' Elemente aus der gemischten Liste auswählen
+        // Sicherstellen, dass 'count' nicht größer ist als die Größe der Liste
         val selectedCount = count.coerceAtMost(allQuestions.size)
 
+        // Antwortoptionen in den ausgewählten Fragen mischen und zurückgeben
         return shuffleOptions(ArrayList(allQuestions.take(selectedCount)))
     }
 

@@ -6,7 +6,7 @@ import android.media.Image
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
 
-//second screen of recycler view
+// CategoryView Data Class
 data class CategoryView(
     val image: Int,
     val category: String,

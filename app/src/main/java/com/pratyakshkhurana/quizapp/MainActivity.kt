@@ -37,9 +37,11 @@ class MainActivity : AppCompatActivity() {
 
     }
 
+    // Methode zur Anzeige des Dialogs mit der Erklärung
     private fun showDialog() {
         val dialogLayout = layoutInflater.inflate(R.layout.explanation_dialog, null)
         builder = AlertDialog.Builder(this)
+        // OnClickListener für den OK-Button im Dialog
         dialogLayout.findViewById<View>(R.id.okButton).setOnClickListener {
             alertDialog.dismiss()
         }
@@ -49,6 +51,7 @@ class MainActivity : AppCompatActivity() {
         alertDialog.show()
     }
 
+    // Übersteuern der Zurück-Taste, um die App zu minimieren
     override fun onBackPressed() {
         moveTaskToBack(true)
     }

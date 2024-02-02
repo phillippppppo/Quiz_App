@@ -12,6 +12,7 @@ import kotlinx.android.synthetic.main.category_button.cardView
 import kotlinx.android.synthetic.main.result_activity.*
 
 
+// Aktivität zur Anzeige von Quizergebnissen und Powers
 class ResultActivity : AppCompatActivity() {
 
     private lateinit var power1TextView: TextView
@@ -28,6 +29,7 @@ class ResultActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.result_activity)
 
+        // UI-Elemente initialisieren
         power1TextView = findViewById(R.id.power1)
         power2TextView = findViewById(R.id.power2)
         power3TextView = findViewById(R.id.power3)
@@ -35,39 +37,43 @@ class ResultActivity : AppCompatActivity() {
         totalScoreTextView = findViewById(R.id.totalScore)
         totalPointsTextView = findViewById(R.id.totalPoints)
 
+        // Ergebnisse und Punkte aus dem Intent extrahieren
         val correct = intent.getIntExtra("correct", 0)
         val totalPoints = UserPointsManager.getTotalPoints()
 
-        // Fetch and display powers
+        // Powers abrufen und anzeigen
         powers = Powers().fetchPowers(totalPoints)
         displayPowers(powers)
 
+        // Texte für Gesamtpunktzahl und Punktegewinn aktualisieren
         totalScoreTextView.text = "Your new total is: $totalPoints Points!"
         totalPointsTextView.text = "You gained: $correct Points!" // Display points gained from the current roun
 
+        // Button-Click-Handler für Zurück zum Kategoriewahl-Bildschirm
         btnFinish.setOnClickListener {
             val intent = Intent(this, QuizCategories::class.java)
             startActivity(intent)
         }
 
-        // Handle power clicks
+        // Click-Handler für Powers
         power1TextView.setOnClickListener { handlePowerClick(powers[0]) }
         power2TextView.setOnClickListener { handlePowerClick(powers[1]) }
         power3TextView.setOnClickListener { handlePowerClick(powers[2]) }
 
     }
 
+    // Methode zur Verarbeitung von Klicks auf Superkräfte
     private fun handlePowerClick(power: Power) {
-        // Deduct points for the selected power
+        // Punkte für ausgewählten Powers abziehen
         UserPointsManager.deductPoints(power.cost)
 
-        // Update the total score text
+        // Gesamtpunktzahl aktualisieren
         totalPointsTextView.text = "Your new total is: ${UserPointsManager.getTotalPoints()} Points!"
 
-        // Disable the clicked power
+        // Ausgewählte Power deaktivieren
         disablePower(power)
 
-        // Check if the user can afford the other two powers
+        // Prüfen, ob der Benutzer sich die anderen beiden Powers leisten kann
         val totalPoints = UserPointsManager.getTotalPoints()
         powers.forEach { otherPower ->
             if (otherPower != power && otherPower.cost > totalPoints) {
@@ -76,31 +82,34 @@ class ResultActivity : AppCompatActivity() {
         }
     }
 
+    // Methode zur Deaktivierung einer Power
     private fun disablePower(power: Power) {
+        // Abhängig von der ID der Power die zugehörige UI-Komponente deaktivieren
         when (power.id) {
             1 -> disablePowerCard(power1Background)
             2 -> disablePowerCard(power2Background)
             3 -> disablePowerCard(power3Background)
-            // Add more cases if needed
         }
-
+        // Abhängig von der ID der Power den zugehörigen TextView deaktivieren
         when (power.id) {
             1 -> power1TextView.isEnabled = false
             2 -> power2TextView.isEnabled = false
             3 -> power3TextView.isEnabled = false
-            // Add more cases if needed
         }
     }
 
+    // Methode zur Deaktivierung einer CardView für eine Power
     private fun disablePowerCard(cardView: CardView) {
-        // Disable the card view
+        // CardView deaktivieren
         cardView.isEnabled = false
 
-        // Change the background color of the disabled card view
+        // Hintergrundfarbe des deaktivierten CardViews ändern
         cardView.setCardBackgroundColor(ContextCompat.getColor(this, R.color.disabledColor))
     }
 
+    // Methode zur Anzeige der Power
     private fun displayPowers(powers: List<Power>) {
+        // Wenn mindestens drei Powers vorhanden sind, Texte für die TextViews setzen
         if (powers.size >= 3) {
             val power1Text = "${powers[0].name}\n\n${powers[0].description}\n\n${powers[0].cost} points"
             val power2Text = "${powers[1].name}\n\n${powers[1].description}\n\n${powers[1].cost} points"
@@ -111,6 +120,8 @@ class ResultActivity : AppCompatActivity() {
             power3TextView.text = power3Text
         }
     }
+
+    // Übersteuern der Zurück-Taste, um die Aktivität zu beenden
     override fun onBackPressed() {
         super.onBackPressed()
         finish()

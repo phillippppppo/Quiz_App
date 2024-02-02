@@ -1,19 +1,25 @@
 package com.pratyakshkhurana.quizapp
 
+// Datenklasse zur Darstellung von Superkräften
 data class Power(val id: Int, val name: String, val description: String, val cost: Int)
 
+// Klasse, die Superkräfte verwaltet
 class Powers {
 
 
+    // Methode zum Abrufen von Superkräften, die der Benutzer basierend auf seinen Punkten kaufen kann
     fun fetchPowers(userPoints: Int): ArrayList<Power> {
+
+        // Alle verfügbaren Powers abrufen
         val allPowers = getAllPowers()
+        // Filtern der bezahlbaren Powers
         val affordablePowers = allPowers.filter { it.cost <= userPoints }
         val selectedPowers = mutableListOf<Power>()
 
-        // Shuffle the list of affordable powers
+        // Liste der bezahlbaren Powers mischen
         val shuffledPowers = affordablePowers.shuffled()
 
-        // Select the first three powers
+        // Die ersten drei Powers auswählen und jedem eine eindeutige ID zuweisen
         for (i in 0 until 3) {
             if (i < shuffledPowers.size) {
                 // Assign an ID (1 to 3) to each power
@@ -24,6 +30,7 @@ class Powers {
         return ArrayList(selectedPowers)
     }
 
+    // Methode zum Erstellen und Abrufen aller verfügbaren Powers
     private fun getAllPowers(): List<Power> {
         // Fetch powers from your data source (or create them)
         val powers = ArrayList<Power>()
